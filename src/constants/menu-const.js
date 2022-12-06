@@ -2,16 +2,26 @@ export const menu = [
     {
         id: 1,
         name: 'Home',
-        link: ''
+        link: '/'
     },
     {
         id: 2,
-        name: 'About Us',
-        link: ''
+        name: 'Lineup',
+        link: '/car-list'
     },
     {
         id: 3,
+        name: 'Car Guide',
+        link: '/car-guide'
+    },
+    {
+        id: 4,
+        name: 'About Us',
+        link: '/about-us'
+    },
+    {
+        id: 5,
         name: 'Contact Us',
-        link: ''
+        link: '/contact-us'
     }
 ]

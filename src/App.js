@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Homepage from './pages/Homepage'
-import NotFound from './pages/NotFound'
+import CarCompare from './pages/CarCompare'
+import CarGuide from './pages/CarGuide'
+import LoadingPage from './pages/LoadingPage'
+
+const AboutUs = lazy(() => import('./pages/AboutUs'))
+const ContactUs = lazy(() => import('./pages/ContactUs'))
+const Homepage = lazy(() => import('./pages/Homepage'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const CarList = lazy(() => import('./pages/CarList'))
 
 const App = () => {
   return (
     <Router>
-        <Routes>
-            <Route exact path='/' element={<Homepage />}></Route>
-            <Route path='*' element={<NotFound />}></Route>
-        </Routes>
+        <Suspense fallback={<LoadingPage />}>
+          <Routes>
+              <Route exact path='/' element={<Homepage />}></Route>
+              <Route path='/car-list' element={<CarList />} ></Route>
+              <Route path='/car-guide' element={<CarGuide />}></Route>
+              <Route path='/about-us' element={<AboutUs />}></Route>
+              <Route path='/contact-us' element={<ContactUs />}></Route>
+              <Route path='/car-compare' element={<CarCompare />}></Route>
+              <Route path='*' element={<NotFound />}></Route>
+          </Routes>
+        </Suspense>
     </Router>
   )
 }
