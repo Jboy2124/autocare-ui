@@ -39,25 +39,25 @@ const Navbar = () => {
                     </ul>
                   </div>
                 </div>
-                <div className={`${styles.flexCenter} hidden tablet:hidden laptop:flex desktop:flex space-x-5 text-[16px] text-white font-poppins`}>
+                <div className={`${styles.flexCenter} hidden tablet:hidden laptopsm:hidden laptop:flex desktop:flex space-x-5 text-[16px] text-white font-poppins`}>
                   <div className='cursor-pointer'>
                     <Link to='/car-compare'>Compare</Link>
                   </div>
-                  <div className='cursor-pointer rounded px-8 py-2 bg-[#E0FCFF] hover:bg-[#6EB6FF] duration-300'>
-                    <span className='text-[16px] text-black font-poppins'>Get Started</span>
+                  <div className='cursor-pointer rounded px-8 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300'>
+                    <span className='text-[16px] text-white font-poppins'>Get Started</span>
                   </div>
                 </div>
                 
-                <div className='hidden mobile:block tablet:block'>
+                <div className='hidden mobile:block tablet:block laptopsm:block'>
                       <div className='text-[27px] text-gray-100 flex justify-center items-center font-poppins cursor-pointer p-[6px] rounded-full hover:bg-[#6EB6FF] duration-300' onClick={() => { setShowMenu(value => !value) }}>
                         { (showMenu) ? <ion-icon name="menu-outline"></ion-icon> : <ion-icon name="close-outline"></ion-icon> }
                       </div>
                 </div>
             </div>
         </div>
-        <div className='relative hidden mobile:block tablet:block'>
-                <div className={`absolute ${ (showMenu) ? 'hidden' : 'block' } bg-gradient-to-r from-primary to-[#2E94B9] w-full z-50`}>
-                      <div className='flex justify-center items-center pb-2'>
+          <div className='hidden mobile:block tablet:block laptopsm:block'>
+                <div className={`${ (showMenu) ? 'hidden' : 'block' } bg-gradient-to-r from-primary to-[#2E94B9] w-full z-50`}>
+                      <div className='flex laptopsm:hidden justify-center items-center pb-2'>
                           <ul className='text-center space-y-1 text-[16px] w-full'>
                             {menu.map(items => {
                               return(
@@ -68,7 +68,7 @@ const Navbar = () => {
                             })}
                           </ul>
                       </div>
-                      <div className='flex justify-center items-center space-x-3 pb-4'>
+                      <div className='mobile:flex tablet:flex laptopsm:flex laptop:hidden desktop:hidden justify-center items-center space-x-3 pb-4'>
                         <div className='px-12 py-2 text-[16px] text-black rounded bg-white cursor-pointer'>
                           <span className='text-[16px] font-poppins'>Compare</span>
                         </div>

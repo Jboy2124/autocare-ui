@@ -11,14 +11,15 @@ module.exports = {
       colors: {
         primary: '#494CA2',
         secondary: '',
-        btnPrimary: '#8186D5',
-        btnSecondary: '#494CA2'
+        btnPrimary: '#54B435',
+        btnSecondary: '#379237'
 
       },
       screens: {
         mobile: { min: '320px', max: '425px' },
         tablet: { min: '426px', max: '768px' },
-        laptop: { min: '769px', max: '1024px'},
+        laptopsm: { min: '769px', max: '1022px'  },
+        laptop: { min: '1023px', max: '1024px'},
         desktop: { min: '1025px', max: '2560px' }
       }
     },
