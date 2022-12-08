@@ -15,16 +15,16 @@ export const featCars = [
         carId: 4,
         carName: 'Mazda',
     },
-    {
-        carId: 5,
-        carName: 'Mazda',
-    },
-    {
-        carId: 6,
-        carName: 'Mazda',
-    },
-    {
-        carId: 7,
-        carName: 'Mazda',
-    },
+    // {
+    //     carId: 5,
+    //     carName: 'Mazda',
+    // },
+    // {
+    //     carId: 6,
+    //     carName: 'Mazda',
+    // },
+    // {
+    //     carId: 7,
+    //     carName: 'Mazda',
+    // },
 ]
