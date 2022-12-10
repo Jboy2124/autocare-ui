@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { styles } from '../styles/all-styles'
 
@@ -11,6 +12,7 @@ const AboutUs = () => {
                 <span>About Us</span>
             </div>
         </section>
+        <Footer />
     </main>
   )
 }

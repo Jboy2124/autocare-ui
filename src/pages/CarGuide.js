@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
 const CustomerCare = () => {
@@ -10,6 +11,7 @@ const CustomerCare = () => {
                 <span>Car Guide for Customers</span>
             </div>
         </div>
+        <Footer />
     </div>
   )
 }

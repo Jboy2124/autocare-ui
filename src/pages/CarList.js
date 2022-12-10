@@ -5,6 +5,7 @@ import Searchbar from '../components/Searchbar'
 import { styles } from '../styles/all-styles'
 import CarCard from '../cards/CarCard'
 import axios from 'axios'
+import Footer from '../components/Footer'
 
 const CarList = () => {
     const [list, setList] = useState([])
@@ -48,6 +49,7 @@ const CarList = () => {
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
   )
 }

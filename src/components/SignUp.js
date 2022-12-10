@@ -1,19 +1,28 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+    const navigate = useNavigate()
+    const handleRegistration = (e) => {
+        e.preventDefault()
+
+        setTimeout(() => {
+            navigate('/registration')
+        }, 500)
+    }
+
   return (
     <div className='bg-[#DEECFF]'>
         <div className='container mx-auto'>
-            <div className='min-h-[60vh] flex justify-evenly items-center mobile:flex-col tablet:flex-col'>
+            <div className='min-h-[70vh] flex justify-evenly items-center mobile:flex-col tablet:flex-col py-5'>
                 <div className='w-full text-center'>
                     <div className='text-[48px] text-gray-600 font-poppins'>
                         Increase your visibility, accessability & sales, register at 
                         <span className='text-[50px] text-[#6EB6FF] font-righteous'> AUTOTRADER</span>
-                        {/* <span className='text-[40px] text-[#E0FCFF] font-righteous'>TRADER</span> */}
                     </div>
                 </div>
                 <div className='w-full flex justify-center items-center'>
-                    <div className='rounded w-[450px] h-[500px] bg-gradient-to-r from-primary to-[#2E94B9] shadow-2xl space-y-3'>
+                    <div className='rounded-2xl ring-4 ring-white w-[430px] h-[500px] bg-gradient-to-r from-primary to-[#2E94B9] shadow-2xl space-y-3'>
                         <div className='flex justify-center items-center w-full h-[45px] text-[20px] my-10 text-white font-poppins'>REGISTER</div>
                         <div className='w-full h-[250px] flex flex-col justify-center px-10 space-y-4'>
                             <div className='flex justify-evenly items-center space-x-3 w-full'>
@@ -37,7 +46,7 @@ const SignUp = () => {
                             </div>
                         </div>
                         <div className='flex justify-center items-center pt-5'>
-                            <div className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer'>Create Account</div>
+                            <div className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer' onClick={(e) => handleRegistration(e)}>Create Account</div>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 
 const CarCompare = () => {
@@ -10,6 +11,7 @@ const CarCompare = () => {
                 <span>Compare Cars here</span>
             </div>
         </div>
+        <Footer />
     </div>
   )
 }
