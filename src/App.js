@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LoadingPage from './pages/LoadingPage'
-const MultiStep = require('react-multistep')
 
 const AboutUs = lazy(() => import('./pages/AboutUs'))
 const ContactUs = lazy(() => import('./pages/ContactUs'))

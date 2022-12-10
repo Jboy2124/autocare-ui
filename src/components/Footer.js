@@ -50,7 +50,7 @@ const Footer = () => {
                         <div className='flex justify-center items-center space-x-3'>
                             <div className='text-[30px] text-gray-700 cursor-pointer hover:text-blue-700 duration-300'><ion-icon name="logo-facebook"></ion-icon></div>
                             <div className='text-[30px] text-gray-700 cursor-pointer hover:text-[#C13584] duration-300'><ion-icon name="logo-instagram"></ion-icon></div>
-                            <div className='text-[30px] text-gray-700 cursor-pointer hover:text-blue-600 duration-300'><ion-icon name="logo-twitter"></ion-icon></div>
+                            <div className='text-[30px] text-gray-700 cursor-pointer hover:text-blue-500 duration-300'><ion-icon name="logo-twitter"></ion-icon></div>
                             <div className='text-[30px] text-gray-700 cursor-pointer hover:text-[#FF0000] duration-300'><ion-icon name="logo-youtube"></ion-icon></div>
                             {/* <div className='text-[30px] text-gray-700 cursor-pointer hover:text-[#000000] duration-300'><ion-icon name="logo-tiktok"></ion-icon></div> */}
                         </div>

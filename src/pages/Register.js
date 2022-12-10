@@ -1,26 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-// import MultiStep from 'react-multistep'
-import SignUp from '../components/SignUp'
-const MultiStep = require ('react-multistep')
+import Stepper from '../components/Stepper'
+import StepperControl from '../components/StepperControl'
+import Account from '../components/steps/Account'
+import Complete from '../components/steps/Complete'
+import Details from '../components/steps/Details'
 
-
-const Register = (props) => {
-
+const Register = () => {
+    const [currentStep, setCurrentStep] = useState(1)
+ 
     const steps = [
-        {
-            title: 'Credentials', component: <SignUp />
-        }
+        'Account Information',
+        'Personal Details',
+        'Complete'
     ]
 
+    const displaySteps = (step) => {
+        switch(step) {
+            case 1:
+                return <Account />
+            case 2: 
+                return <Details />
+            case 3:
+                return <Complete />
+            default:
+        }
+    }
+
+
+    const handleClick = (direction) => {
+
+    }
+
   return (
-    <div className='bg-gray-100'>
+    <div className='bg-gray-400'>
         <Navbar />
         <div className='container mx-auto'>
-            <div className='min-h-screen flex justify-center items-center'>
-                <div>Registration</div>
-                <MultiStep activeStep={1} showNavigation={true} steps={steps} />
+            <div className='min-h-screen flex flex-col'>
+                <div className='text-center'>Registration</div>
+                <Stepper 
+                    steps={steps}
+                    currentStep={currentStep}
+                />
+                <StepperControl 
+                    handleClick={handleClick}
+                    currentStep={currentStep}
+                    steps={steps}
+                />
             </div>
         </div>
         <Footer />
