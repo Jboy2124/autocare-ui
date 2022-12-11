@@ -1,10 +1,38 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+// import axios from 'axios'
+import { api } from '../utilities/axios-utils'
+import { useDispatch } from 'react-redux'
+import { actions } from '../redux/slices/reg-slice'
 
 const SignUp = () => {
+    const fnameRef = useRef(null)
+    const lnameRef = useRef(null)
+    const emailRef = useRef(null)
+    const passwordRef = useRef(null)
+
     const navigate = useNavigate()
-    const handleRegistration = (e) => {
+    const dispatch = useDispatch();
+
+    const handleRegistration = async (e) => {
         e.preventDefault()
+
+        await api({
+            method: 'POST',
+            url: '/register',
+            data: {
+                fname: fnameRef.current.value,
+                lname: lnameRef.current.value,
+                email: emailRef.current.value,
+                password: passwordRef.current.value
+            }
+        })
+        .then(response => {
+            console.log(response.data)
+            dispatch(actions.getID(response.data))
+        })
+       
+
 
         setTimeout(() => {
             navigate('/registration')
@@ -26,17 +54,17 @@ const SignUp = () => {
                         <div className='flex justify-center items-center w-full h-[45px] text-[20px] my-10 text-white font-poppins'>REGISTER</div>
                         <div className='w-full h-[250px] flex flex-col justify-center px-10 space-y-4'>
                             <div className='flex justify-evenly items-center space-x-3 w-full'>
-                                <input type='text' placeholder='Firstname' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary outline-none py-2 px-1 w-full' />
-                                <input type='text' placeholder='Lastname' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
+                                <input type='text' ref={fnameRef} placeholder='Firstname' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary outline-none py-2 px-1 w-full' />
+                                <input type='text' ref={lnameRef} placeholder='Lastname' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
                             </div>
                             <div className='flex justify-center items-center'>
-                                <input type='email' placeholder='example@email.com' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
+                                <input type='email' ref={emailRef} placeholder='example@email.com' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
                             </div>
                             <div className='flex justify-center items-center'>
                                 <input type='password' placeholder='Password' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
                             </div>
                             <div className='flex justify-center items-center'>
-                                <input type='password' placeholder='Confirm password' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
+                                <input type='password' ref={passwordRef} placeholder='Confirm password' className='text-[14px] font-poppins focus:ring-2 focus:ring-btnPrimary  outline-none py-2 px-1 w-full' />
                             </div>
                             <div className='flex items-center'>
                                 <input type='checkbox' name='chkAccept' className='font-poppins cursor-pointer focus:ring-2 focus:ring-btnPrimary ' />
