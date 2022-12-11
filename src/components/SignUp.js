@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import axios from 'axios'
 import { api } from '../utilities/axios-utils'
 import { useDispatch } from 'react-redux'
 import { actions } from '../redux/slices/reg-slice'
@@ -16,7 +15,6 @@ const SignUp = () => {
 
     const handleRegistration = async (e) => {
         e.preventDefault()
-
         await api({
             method: 'POST',
             url: '/register',
@@ -28,15 +26,13 @@ const SignUp = () => {
             }
         })
         .then(response => {
-            console.log(response.data)
             dispatch(actions.getID(response.data))
         })
-       
-
-
-        setTimeout(() => {
-            navigate('/registration')
-        }, 500)
+        .then(
+            setTimeout(() => {
+                navigate('/registration')
+            }, 500)
+        )    
     }
 
   return (

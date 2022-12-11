@@ -1,31 +1,42 @@
 import React, { useEffect, useState } from 'react'
-// import Filters from '../components/Filters'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
 import { styles } from '../styles/all-styles'
 import CarCard from '../cards/CarCard'
-import axios from 'axios'
 import Footer from '../components/Footer'
+import { api } from '../utilities/axios-utils'
 
 const CarList = () => {
     const [list, setList] = useState([])
 
-    
-
-    const getList = async() => {
-        await axios({
-        method: 'GET',
-        url: 'http://localhost:8000/cars'
-       })
-       .then (response => {
+    const getList = async(signal) => {
+        const result = await api({
+            method: 'GET',
+            url: '/cars',
+            signal: signal
+        })
+        .then(response => {
             setList(response.data[1].result)
-            console.log(response.data[1].result)
-       })
+        })
+        .catch(err => {
+            if(err.name === 'AbortError') {
+                console.log('Aborted')
+            } else {
+                return err
+            }
+        })
+        return result
     }
 
-
     useEffect(() => {
-        getList()
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        const res = getList(signal)
+
+        return () => {
+            if(res) return controller.abort();
+        }
     }, [])
 
   return (
@@ -43,7 +54,6 @@ const CarList = () => {
                                     make={items.make}
                                 />
                             </div>
-                           
                         )
                     })}
                 </div>

@@ -3,28 +3,66 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { format } from 'date-fns'
 import { useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
 
 
 const Register = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const id = useSelector((state) => state.accountID.value)
     const currentDate = format(new Date(Date.now()), 'MMMM dd, yyyy')
- 
+
+    console.log(errors)
   return (
     <div className='bg-white'>
         <Navbar />
         <div className='relative min-h-screen'>
             <div className='container mx-auto'>
                 <div className='flex flex-col items-center'>
-                    <div className='text-center text-[40px] text-gray-600 font-poppins mt-10'>Registration { id }</div>
-                    <div className='text-[16px] text-gray-600 font-poppins text-center'>Register your company & advertise all your product cars! Unlimited post! forever!</div>
-                    <div className='rounded-2xl w-2/4 mobile:w-full tablet:w-3/4 h-screen mt-5 mb-10 shadow-xl ring-4 ring-white bg-[#DEECFF] z-10'>
-                        <div className='text-end text-[15px] text-gray-600 font-poppins p-5'>
-                            <label className='text-[15px] text-gray-600 font-poppins'><span className='text-[15px] text-gray-600 font-poppins font-semibold px-3'>Date: </span> {currentDate} </label>
-                            <div className='w-full bg-green-200 flex justify-evenly items-center'>
-                                <input type='text' />
-                                <input type='text' />
+                    <div className='rounded-2xl w-2/4 mobile:w-full tablet:w-3/4 h-screen my-20 shadow-xl ring-4 ring-white bg-[#DEECFF] z-10'>
+                        <form onSubmit={handleSubmit(data => console.log(data))}>
+                            <div className='text-[25px] text-gray-600 font-poppins text-center py-9'>Basic Information</div>
+                            <div className='px-20 w-full flex flex-col items-center space-y-3'>
+                                <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins'>Login Information</div>
+                                    <div className='flex justify-evenly items-center w-full space-x-5'>
+                                        <input type='text' {...register("fname")} placeholder='Firstname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("lname")} placeholder='Lastname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    </div>
+                                    <input type='email' {...register('email')} placeholder='Email Address' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <div className='flex justify-evenly items-center w-full space-x-5'>
+                                        <input type='text' {...register("password")} placeholder='Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("confirmPassword")} placeholder='Confirm Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    </div>
+
+                                <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins pt-6'>Company Information</div>
+                                    <input type='text' {...register('company', { required: 'This field is required!' })} placeholder='Company Name' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <div className='flex justify-evenly items-center space-x-5 w-full'>
+                                        <input type='text' {...register('tin')} placeholder='TIN' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register('regNo')} placeholder='Registration No.' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    </div>
+                                    <input type='text' {...register('description')} placeholder='Description' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+
+                                <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins pt-6'>Address/Location</div>
+                                    <input type='text' {...register('address')} placeholder='Door#/St./Floor/Address' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <div className='flex items-center justify-evenly space-x-5'>
+                                        <input type='text' {...register("brgy")} placeholder='Barangay' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("city")} placeholder='Municipality/City' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("zip")} placeholder='Zip Code' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    </div>
+                                    <input type='text' {...register('province')} placeholder='Province' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <input type='text' {...register('landmark')} placeholder='Nearest Landmark' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+
+                                <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins pt-6'>Contact Details</div>
+                                    <input type='text' {...register('contactPerson')} placeholder='Contact Person' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <div className='flex justify-evenly items-center w-full space-x-5'>
+                                        <input type='text' {...register("mobileNo")} placeholder='Mobile No.' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("telNo")} placeholder='Landline No.' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    </div>
                             </div>
-                        </div>
+                            <div className='w-full h-[30px] flex justify-center items-center mt-12'>
+                                <button type='submit' className='bg-btnPrimary hover:bg-btnSecondary duration-300 px-20 py-2 text[16px] text-white font-poppins text-center rounded'>Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
