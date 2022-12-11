@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialValue = {
-    account: 0
+    fName: '',
+    lName: '',
+    emailAdd: '',
+    passWord: '',
+    confirmPass: ''
 }
 
 const accountSlice = createSlice({
     name: 'accountSlice',
     initialState: { value: initialValue },
     reducers: {
-        getID: (state, action) => {
+        loginCredential: (state, action) => {
             state.value = action.payload
         }
     }

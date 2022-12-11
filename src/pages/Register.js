@@ -1,18 +1,17 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { format } from 'date-fns'
+// import { format } from 'date-fns'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
 
-    const id = useSelector((state) => state.accountID.value)
-    const currentDate = format(new Date(Date.now()), 'MMMM dd, yyyy')
+    const dataArray = useSelector((state) => state.loginCreds.value)
+    // const currentDate = format(new Date(Date.now()), 'MMMM dd, yyyy')
 
-    console.log(errors)
   return (
     <div className='bg-white'>
         <Navbar />
@@ -25,13 +24,13 @@ const Register = () => {
                             <div className='px-20 w-full flex flex-col items-center space-y-3'>
                                 <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins'>Login Information</div>
                                     <div className='flex justify-evenly items-center w-full space-x-5'>
-                                        <input type='text' {...register("fname")} placeholder='Firstname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
-                                        <input type='text' {...register("lname")} placeholder='Lastname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("fname", { value: dataArray.fName } )} placeholder='Firstname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='text' {...register("lname", { value: dataArray.lName })} placeholder='Lastname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
                                     </div>
-                                    <input type='email' {...register('email')} placeholder='Email Address' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                    <input type='email' {...register('email', { value: dataArray.emailAdd })} placeholder='Email Address' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
                                     <div className='flex justify-evenly items-center w-full space-x-5'>
-                                        <input type='text' {...register("password")} placeholder='Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
-                                        <input type='text' {...register("confirmPassword")} placeholder='Confirm Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='password' {...register("password", { value: dataArray.passWord })} placeholder='Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
+                                        <input type='password' {...register("confirmPassword", { value: dataArray.confirmPass })} placeholder='Confirm Password' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
                                     </div>
 
                                 <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins pt-6'>Company Information</div>

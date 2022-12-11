@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import AccountId from '../redux/slices/reg-slice'
+import AccountCredentials from '../redux/slices/reg-slice'
 
 
 const store = configureStore({
     reducer: {
-        accountID: AccountId
+        loginCreds: AccountCredentials
     }
 })
 
