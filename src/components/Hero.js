@@ -13,6 +13,9 @@ const Hero = () => {
     }
   return (
     <div className='relative bg-gradient-to-r from-primary to-[#2E94B9] overflow-hidden'>
+
+       
+
        <div className='container mx-auto'>
             <div className='min-h-[75vh] flex mobile:flex-col tablet:flex-col justify-evenly items-center spa'>
                 <div className='mobile:w-[300px] tablet:w-[300px] tablet:mt-10 laptopsm:w-[550px] w-[500px] h-[420px] mx-20 rounded-2xl bg-gradient-to-t from-primary to-[#2E94B9] ring-8 ring-white shadow-2xl z-50'>
@@ -33,7 +36,11 @@ const Hero = () => {
                 </div>
             </div>
        </div>
+       
        <svg className='absolute bottom-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fillOpacity="1" d="M0,160L1440,32L1440,320L0,320Z"></path></svg>
+       {/* <div className='fixed left-[50%] top-[50%] w-[330px] h-[400px] mt-[-100px] ml-[-250px] bg-blue-400 ring-4 ring-gray-200 rounded-l z-50'>
+
+        </div>   */}
     </div> 
   )
 }

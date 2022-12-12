@@ -7,25 +7,8 @@ import { featCars } from '../constants/featured-cars'
 import SignUp from '../components/SignUp'
 import HelpChoose from '../components/HelpChoose'
 import CarBrands from '../components/CarBrands'
-// import axios from 'axios'
 
 const Homepage = () => {
-  // const [getCars, setGetCars] = useState([])
-
-  // const featCars = async() => {
-  //   await axios({
-  //     method: 'GET',
-  //     url: 'http://localhost:8000/featured-car'
-  //   })
-  //   .then(response => {
-  //     setGetCars(response.data)
-  //   })
-  // }
-
-  // useEffect(() => {
-  //    featCars()
-  //    console.log('1')
-  // }, [])
 
   return (
     <div className='bg-white'>

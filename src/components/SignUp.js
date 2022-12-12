@@ -1,37 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { api } from '../utilities/axios-utils'
 import { useDispatch } from 'react-redux'
 import { actions } from '../redux/slices/reg-slice'
 import { useForm } from 'react-hook-form'
 
 const SignUp = () => {
     const { register, handleSubmit } = useForm()
-
     const navigate = useNavigate()
     const dispatch = useDispatch();
-
-    // const handleRegistration = async (e) => {
-    //     e.preventDefault()
-    //     await api({
-    //         method: 'POST',
-    //         url: '/register',
-    //         data: {
-    //             fname: fnameRef.current.value,
-    //             lname: lnameRef.current.value,
-    //             email: emailRef.current.value,
-    //             password: passwordRef.current.value
-    //         }
-    //     })
-    //     .then(response => {
-    //         dispatch(actions.getID(response.data))
-    //     })
-    //     .then(
-    //         setTimeout(() => {
-    //             navigate('/registration')
-    //         }, 500)
-    //     )    
-    // }
 
     const dataArray = (data, e) => {
         e.preventDefault()
@@ -84,7 +60,7 @@ const SignUp = () => {
                                     </label>
                                 </div>
                             </div>
-                            <div className='flex justify-center items-center pt-5'>
+                            <div className='flex justify-center items-center pt-8'>
                                 {/* <div className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer'>Create Account</div> */}
                                 <button type='submit' className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300'>Create Account</button>
                             </div>

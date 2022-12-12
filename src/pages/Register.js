@@ -1,16 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-// import { format } from 'date-fns'
 import { useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-
+import { api } from '../utilities/axios-utils'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
-    const { register, handleSubmit } = useForm();
-
+    const { register, handleSubmit, reset, formState: { isSubmitSuccessful } } = useForm();
     const dataArray = useSelector((state) => state.loginCreds.value)
-    // const currentDate = format(new Date(Date.now()), 'MMMM dd, yyyy')
+    const navigate = useNavigate()
+
+
+
+    const registerCompany = async (data, e) => {
+        e.preventDefault()
+
+        await api({
+            method: 'POST',
+            url: '/register',
+            data: data
+        })
+        .then(response => {
+            toast.info(response.data.message, {
+                autoClose: 2000
+            })
+            setTimeout(() => {
+                navigate('/')
+            }, 3000);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    useEffect(() => {
+        if(isSubmitSuccessful) {
+            reset()
+        }
+    }, [isSubmitSuccessful, reset])
 
   return (
     <div className='bg-white'>
@@ -19,9 +49,9 @@ const Register = () => {
             <div className='container mx-auto'>
                 <div className='flex flex-col items-center'>
                     <div className='rounded-2xl w-2/4 mobile:w-full tablet:w-3/4 h-screen my-20 shadow-xl ring-4 ring-white bg-[#DEECFF] z-10'>
-                        <form onSubmit={handleSubmit(data => console.log(data))}>
-                            <div className='text-[25px] text-gray-600 font-poppins text-center py-9'>Basic Information</div>
-                            <div className='px-20 w-full flex flex-col items-center space-y-3'>
+                        <form onSubmit={handleSubmit((data, e) => { registerCompany(data, e) })}>
+                            <div className='text-[25px] text-gray-600 font-poppins text-center py-6'>Basic Information</div>
+                            <div className='mobile:px-6 tablet:px-8 laptopsm:px-10 px-20 w-full flex flex-col items-center space-y-3'>
                                 <div className='flex justify-start items-center w-full text-[16px] text-gray-600 font-poppins'>Login Information</div>
                                     <div className='flex justify-evenly items-center w-full space-x-5'>
                                         <input type='text' {...register("fname", { value: dataArray.fName } )} placeholder='Firstname' className='text-[15px] text-gray-600 font-poppins outline-none py-[5px] px-2 w-full' />
@@ -68,6 +98,7 @@ const Register = () => {
             <svg className='absolute bottom-0' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#B2C8DF" fillOpacity="1" d="M0,160L1440,32L1440,320L0,320Z"></path></svg>
         </div>
         <Footer />
+        <ToastContainer />
     </div>
   )
 }

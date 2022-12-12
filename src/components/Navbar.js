@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { styles } from '../styles/all-styles'
 import { menu } from '../constants/menu-const'
-import { Link } from 'react-router-dom'
-// import Speedo from '../assets/speedometer.jpg'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(true)
+  const navigate = useNavigate()
 
   return (
     <div className='relative bg-gradient-to-r from-primary to-[#2E94B9]'>
@@ -15,7 +16,8 @@ const Navbar = () => {
               </div>
           </div>
         </div> */}
-        
+
+
         <div className='container mx-auto'>
             <div className={`w-full h-[80px] ${styles.flexBetween}`}>
                 <div className={`${styles.flexStart} text-[#E0FCFF] space-x-12`}>
@@ -39,12 +41,17 @@ const Navbar = () => {
                     </ul>
                   </div>
                 </div>
-                <div className={`${styles.flexCenter} hidden tablet:hidden laptopsm:hidden laptop:flex desktop:flex space-x-5 text-[16px] text-white font-poppins`}>
+                <div className={`hidden tablet:hidden laptopsm:hidden laptop:flex desktop:flex justify-evenly items-center space-x-7`}>
                   <div className='cursor-pointer'>
-                    <Link to='/car-compare'>Compare</Link>
+                    <Link to='/car-compare'><span className='text-[16px] text-white text-center font-poppins'>Compare</span></Link>
                   </div>
-                  <div className='cursor-pointer rounded px-8 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300'>
-                    <span className='text-[16px] text-white font-poppins'>Get Started</span>
+                  <div className='bg-btnPrimary hover:bg-btnSecondary px-14 py-2 rounded cursor-pointer duration-300' onClick={() => navigate('/login')}>
+                    <div className='text-[16px] text-white font-poppins'>
+                        <span>Login</span>
+                    </div>
+                  </div>
+                  <div >
+
                   </div>
                 </div>
                 
