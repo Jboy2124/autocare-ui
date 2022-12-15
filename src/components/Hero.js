@@ -1,15 +1,19 @@
 import React from 'react'
 import HomeHero from '../assets/home-hero-final.png'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { actions } from '../redux/slices/compare-inc'
 
 const Hero = () => {
     const navigate = useNavigate()
+    const dispath = useDispatch()
 
     const handleLoadToCarList = (e) => {
-        e.preventDefault()
-        setTimeout(() => {
-            navigate('/car-list')
-        }, 500)
+        // e.preventDefault()
+        // setTimeout(() => {
+        //     navigate('/car-list')
+        // }, 500)
+        dispath(actions.incrementCarCompare())
     }
   return (
     <div className='relative bg-gradient-to-r from-primary to-[#2E94B9] overflow-hidden'>
@@ -31,7 +35,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <div className='grid gri place-items-center space-y-5 gap-5 w-full overflow-hidden mt-10 z-50'>
+                <div className='grid gri place-items-center space-y-5 gap-5 w-full overflow-hidden mt-10 z-20'>
                     <img src={HomeHero} alt='Home Hero' className='object-center object-cover' />
                 </div>
             </div>

@@ -2,12 +2,25 @@ import React, { useState } from 'react'
 import { styles } from '../styles/all-styles'
 import { menu } from '../constants/menu-const'
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Profile from './Profile'
 
 
 const Navbar = () => {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [showMenu, setShowMenu] = useState(true)
+  const [showProfile, setShowProfile] = useState(false)
   const navigate = useNavigate()
+  const CarCount = useSelector((state) => state.car_compare.value)
+  // const selectorValue = useSelector((state) => state.auth.value)
+  // console.log('Selector Value: ', selectorValue)
 
+  // useEffect(() => {
+  //   setIsLoggedIn(selectorValue)
+  //   console.log(selectorValue)
+  // }, [selectorValue])
+
+  
   return (
     <div className='relative bg-gradient-to-r from-primary to-[#2E94B9]'>
         {/* <div className='container mx-auto flex justify-center items-center'>
@@ -20,7 +33,7 @@ const Navbar = () => {
 
         <div className='container mx-auto'>
             <div className={`w-full h-[80px] ${styles.flexBetween}`}>
-                <div className={`${styles.flexStart} text-[#E0FCFF] space-x-12`}>
+                <div className={`${styles.flexStart} text-[#E0FCFF] space-x-6`}>
                   <div className='flex justify-center items-center'>
                     <div className='font-righteous'>
                         <Link to='/' className='cursor-default'>
@@ -41,17 +54,18 @@ const Navbar = () => {
                     </ul>
                   </div>
                 </div>
-                <div className={`hidden tablet:hidden laptopsm:hidden laptop:flex desktop:flex justify-evenly items-center space-x-7`}>
-                  <div className='cursor-pointer'>
-                    <Link to='/car-compare'><span className='text-[16px] text-white text-center font-poppins'>Compare</span></Link>
+                <div className={`relative hidden tablet:hidden laptopsm:hidden laptop:flex desktop:flex justify-evenly items-center space-x-1`}>
+                   <div className='relative cursor-pointer group'>
+                    <Link to='/car-compare'><span className='text-[25px] text-white hover:text-gray-600 text-center font-poppins flex justify-center items-center rounded-full py-2 px-2 hover:bg-gray-400 duration-300'><ion-icon name="notifications"></ion-icon></span></Link>
+                    <div className={`${(CarCount === 0) ? 'hidden' : 'block'} absolute rounded-full w-[8px] h-[8px] text-[10px] text-white top-[8px] right-[10px] bg-rose-600 group-hover:bg-rose-800 flex justify-center items-center py-[2px]`}></div>
                   </div>
-                  <div className='bg-btnPrimary hover:bg-btnSecondary px-14 py-2 rounded cursor-pointer duration-300' onClick={() => navigate('/login')}>
-                    <div className='text-[16px] text-white font-poppins'>
-                        <span>Login</span>
-                    </div>
+                  <div className='rounded-full w-[38px] h-[38px] ring-1 ring-white bg-gray-200 cursor-pointer overflow-hidden' onClick={() => { setShowProfile(value => !value) }}>
+                      <div className='flex justify-center items-end object-bottom object-cover w-full h-full text-[30px] text-gray-400 mt-[2px]'>
+                        <ion-icon name="person"></ion-icon>
+                      </div>
                   </div>
-                  <div >
-
+                  <div className={` ${(showProfile) ? 'block' : 'hidden'} absolute top-12 right-[-50px] z-30`}>
+                      <Profile />
                   </div>
                 </div>
                 

@@ -12,8 +12,8 @@ module.exports = {
         primary: '#494CA2',
         secondary: '',
         btnPrimary: '#54B435',
-        btnSecondary: '#379237'
-
+        btnSecondary: '#379237',
+        ringColor: '#3387B5'
       },
       screens: {
         mobile: { min: '320px', max: '425px' },
