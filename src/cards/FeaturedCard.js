@@ -16,7 +16,7 @@ const FeaturedCard = (props) => {
         <div className='flex flex-col justify-evenly items-center pt-3'>
           <div className='text-[18px] text-white font-poppins text-center'>{carName} {model} - {year}</div>
           <div className='text-[13px] text-white font-poppins'>Php {price}</div>
-          <div className='bg-btnPrimary rounded flex justify-center items-center mt-5 cursor-pointer'>
+          <div className='bg-btnPrimary rounded-full flex justify-center items-center mt-5 cursor-pointer'>
               <div className='px-14 py-2 text-center text-[14px] text-white font-poppins'>Full Specs</div>
           </div>
         </div>

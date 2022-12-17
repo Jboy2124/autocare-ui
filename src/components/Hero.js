@@ -1,28 +1,25 @@
 import React from 'react'
 import HomeHero from '../assets/home-hero-final.png'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { actions } from '../redux/slices/compare-inc'
+// import { useDispatch } from 'react-redux'
+// import { actions } from '../redux/slices/compare-inc'
 
 const Hero = () => {
     const navigate = useNavigate()
-    const dispath = useDispatch()
+    // const dispath = useDispatch()
 
     const handleLoadToCarList = (e) => {
-        // e.preventDefault()
-        // setTimeout(() => {
-        //     navigate('/car-list')
-        // }, 500)
-        dispath(actions.incrementCarCompare())
+        e.preventDefault()
+        // dispath(actions.incrementCarCompare())
+        setTimeout(() => {
+            navigate('/car-list')
+        }, 300);
     }
   return (
     <div className='relative bg-gradient-to-r from-primary to-[#2E94B9] overflow-hidden'>
-
-       
-
        <div className='container mx-auto'>
             <div className='min-h-[75vh] flex mobile:flex-col tablet:flex-col justify-evenly items-center spa'>
-                <div className='mobile:w-[300px] tablet:w-[300px] tablet:mt-10 laptopsm:w-[550px] w-[500px] h-[420px] mx-20 rounded-2xl bg-gradient-to-t from-primary to-[#2E94B9] ring-8 ring-white shadow-2xl z-50'>
+                <div className='mobile:w-[300px] tablet:w-[300px] tablet:mt-10 laptopsm:w-[550px] w-[500px] h-[420px] mx-20 rounded-2xl bg-gradient-to-t from-primary to-[#2E94B9] ring-8 ring-white shadow-2xl z-30'>
                     {/* <div className='w-full h-[45px] rounded-t bg-[#D1D1D1] flex justify-center items-center'></div> */}
                     <div className='flex flex-col justify-center items-center mt-10'>
                         <p className='text-[32px] mobile:text-[25px] text-center text-white font-poppins'>Simple &</p>
@@ -30,7 +27,7 @@ const Hero = () => {
                         <p className='text-[32px] mobile:text-[25px] text-center text-white font-poppins'>to find a car.</p>
                         {/* <div className='text-[26px] mobile:text-[30px] text-center  text-white font-poppins px-5'>Let us help you find the car that you're looking for.</div> */}
                         <div className='text-[16px] text-white font-poppins text-center py-3 px-6 mt-3'>We have great cars, good prices & outstanding services.</div>
-                        <div className='bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer rounded flex justify-center items-center px-14 py-[10px] mt-12' onClick={(e) => handleLoadToCarList(e)}>
+                        <div className='bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer rounded-full flex justify-center items-center px-14 py-[10px] mt-12' onClick={(e) => handleLoadToCarList(e)}>
                             <div className='text-[15px] text-white font-poppins'>Find A Car</div>
                         </div>
                     </div>

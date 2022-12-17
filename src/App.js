@@ -11,6 +11,7 @@ const CarCompare = lazy(() => import('./pages/CarCompare'))
 const CarGuide = lazy(() => import('./pages/CarGuide'))
 const Register = lazy(() => import('./pages/Register'))
 const Login = lazy(() => import('./pages/Login'))
+const Uploads = lazy(() => import('./pages/Uploads'))
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
               <Route path='/car-compare' element={<CarCompare />}></Route>
               <Route path='/login' element={<Login />}></Route>
               <Route path='/registration' element={<Register />}></Route>
+              <Route path='/uploads' element={<Uploads />}></Route>
               <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </Suspense>

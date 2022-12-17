@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../utilities/axios-utils'
 import { useDispatch } from 'react-redux'
 import { actions } from '../redux/slices/auth-slice'
+import { actionProfile } from '../redux/slices/profile-slice'
+import Navbar from '../components/Navbar'
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { isSubmitSuccessful } } = useForm()
@@ -27,9 +29,14 @@ const Login = () => {
             switch(response.data.response) {
                 case 'Success':
                     dispath(actions.LoginAuth(true))
+                    dispath(actionProfile.profile({
+                        firstname: response.data.result[0].firstname,
+                        lastname: response.data.result[0].lastname,
+                        email: response.data.result[0].email
+                    }))
                     setTimeout(() => {
                         navigate('/')
-                    }, 500)
+                    }, 200)
                     break;
                 case 'Invalid Password':
                     setErrorPassword(true)
@@ -59,6 +66,7 @@ const Login = () => {
     }
   return (
     <div className='relative bg-[#DEECFF]'>
+        <Navbar />
         <div className='container mx-auto'>
             <div className='min-h-screen flex mobile:flex-col tablet:flex-col space-y-5 justify-evenly items-center'>
                 {/* Login Banne  */}
@@ -92,7 +100,7 @@ const Login = () => {
                                     <label className='px-2 text-[14px] text-white font-poppins'>Remember password</label>
                                 </div>
                                 <div className='w-full flex justify-center items-center pt-12'>
-                                    <button type="submit" className='px-20 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 text-[15px] text-white font-poppins rounded mb-2'>Submit</button>
+                                    <button type="submit" className='px-20 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 text-[15px] text-white font-poppins rounded-full mb-2'>Submit</button>
                                 </div>
                                 <div className='text-[13px] text-white hover:text-orange-400 hover:underline underline-offset-2 duration-300 cursor-pointer font-poppins'>Forgot Password?</div>
                                 <div className='text-[13px] text-white font-poppins'>Navigate back to <span className='hover:text-orange-400 hover:underline underline-offset-2 duration-300'><Link to='/'>Homepage</Link></span></div>

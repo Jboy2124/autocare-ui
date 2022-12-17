@@ -26,7 +26,7 @@ const SignUp = () => {
     }
 
   return (
-    <div className='bg-[#DEECFF]'>
+    <div name='signup' className='bg-[#DEECFF]'>
         <div className='container mx-auto'>
             <div className='min-h-[70vh] flex justify-evenly items-center mobile:flex-col tablet:flex-col py-5'>
                 <div className='w-full text-center'>
@@ -62,7 +62,7 @@ const SignUp = () => {
                             </div>
                             <div className='flex justify-center items-center pt-8'>
                                 {/* <div className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300 cursor-pointer'>Create Account</div> */}
-                                <button type='submit' className='text-[15px] text-white font-poppins rounded px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300'>Create Account</button>
+                                <button type='submit' className='text-[15px] text-white font-poppins rounded-full px-10 py-2 bg-btnPrimary hover:bg-btnSecondary duration-300'>Create Account</button>
                             </div>
                         </form>
                     </div>
